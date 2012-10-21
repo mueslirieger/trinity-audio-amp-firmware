@@ -1,0 +1,1 @@
+# In this repository you can find the software for the Trinity audio amplifier, which is built in our school
