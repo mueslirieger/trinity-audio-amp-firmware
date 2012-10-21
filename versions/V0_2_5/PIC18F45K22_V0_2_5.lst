@@ -1,0 +1,1093 @@
+CCS PCH C Compiler, Version 4.114, 93480374               19-Okt-12 10:23
+
+               Filename: H:\versions\V0_2_5\PIC18F45K22_V0_2_5.lst
+
+               ROM used: 1480 bytes (5%)
+                         Largest free fragment is 31284
+               RAM used: 50 (3%) at main() level
+                         56 (4%) worst case
+               Stack:    3 worst case (2 in main + 1 for interrupts)
+
+*
+0000:  GOTO   0420
+*
+0008:  MOVWF  04
+000A:  MOVFF  FD8,05
+000E:  MOVFF  FE0,06
+0012:  MOVLB  0
+0014:  MOVFF  FE9,0C
+0018:  MOVFF  FEA,07
+001C:  MOVFF  FE1,08
+0020:  MOVFF  FE2,09
+0024:  MOVFF  FD9,0A
+0028:  MOVFF  FDA,0B
+002C:  MOVFF  FF3,12
+0030:  MOVFF  FF4,13
+0034:  MOVFF  FFA,14
+0038:  MOVFF  FF5,15
+003C:  MOVFF  FF6,16
+0040:  MOVFF  FF7,17
+0044:  MOVFF  00,0E
+0048:  MOVFF  01,0F
+004C:  MOVFF  02,10
+0050:  MOVFF  03,11
+0054:  BTFSS  FF2.5
+0056:  GOTO   0060
+005A:  BTFSC  FF2.2
+005C:  GOTO   00AE
+0060:  MOVFF  0E,00
+0064:  MOVFF  0F,01
+0068:  MOVFF  10,02
+006C:  MOVFF  11,03
+0070:  MOVFF  0C,FE9
+0074:  MOVFF  07,FEA
+0078:  BSF    07.7
+007A:  MOVFF  08,FE1
+007E:  MOVFF  09,FE2
+0082:  MOVFF  0A,FD9
+0086:  MOVFF  0B,FDA
+008A:  MOVFF  12,FF3
+008E:  MOVFF  13,FF4
+0092:  MOVFF  14,FFA
+0096:  MOVFF  15,FF5
+009A:  MOVFF  16,FF6
+009E:  MOVFF  17,FF7
+00A2:  MOVF   04,W
+00A4:  MOVFF  06,FE0
+00A8:  MOVFF  05,FD8
+00AC:  RETFIE 0
+.................... //******************************************************************************* 
+.................... //*       Programmname: Trinity          DOS Name:trinity2_00_45K22.c             *    
+.................... //*       Release: 1.1                   Datum: 21.12.2011                        * 
+.................... //*       Org. Autor: STRI               Firma: HTL                              * 
+.................... //*       Bearb. Autor: PITD             Firma: HTL                              * 
+.................... //******************************************************************************* 
+.................... // 
+.................... //******************************************************************************* 
+.................... //*  Bemerkungen:                                                                 * 
+.................... //*  Compiler Release: MPLAB 8.73 CCS Compiler PCH (PCM und PCB 4.127)            * 
+.................... //*                                                                               * 
+.................... //******************************************************************************* 
+.................... //******************************************************************************* 
+.................... //*      Pinbelegung:                                                * 
+.................... //*      RA0 = AN0 Analogeingang 0 VU links                               * 
+.................... //*      RA1 = AN1 Analogeingang 1 VU recht                               * 
+.................... //*      RA2 = AN2 Analogeingang 2 Bass                                  * 
+.................... //*      RA3 = AN3 Analogeingang 3 Mitten                               * 
+.................... //*      RA4 = CS\ PCM2705                                           * 
+.................... //*      RA5 = AN4 Analogeingang 4 Höhen                                 * 
+.................... //*      RA6 = NC                                                * 
+.................... //*      RA7 = SSPND\ Powerdown für Audio                               * 
+.................... //*      RB0 = SCLK SPI Clock PCM 2705                                  * 
+.................... //*      RB1 = MOSI SPI Daten                                        * 
+.................... //*      RB2 = Taste - activ low                                       * 
+.................... //*      RB3 = Taste + active low                                     * 
+.................... //*      RB4 = Taste Down activ low                                     * 
+.................... //*      RB5 = Taste Up activ low                                     * 
+.................... //*      RB6 = Taste OK activ low (nicht verwendet) & Programm Clock PGC          * 
+.................... //*      RB7 = Taste Enter activ low (nicht verwendet) & Programm Data PGD       * 
+.................... //*      RC0 = VR0 VU Meter rechts unterste LED                            * 
+.................... //*      RC1 = VR1 VU Meter rechts                                      * 
+.................... //*      RC2 = VR2 VU Meter rechts                                      * 
+.................... //*      RC3 = VR3 VU Meter rechts                                      * 
+.................... //*      RC4 = VL7 VU Meter rechts oberste LED                           * 
+.................... //*      RC5 = VL6 VU Meter rechts                                      * 
+.................... //*      RC6 = VL5 VU Meter rechts                                      * 
+.................... //*      RC7 = VL4 VU Meter rechts                                      * 
+.................... //*      RD0 = VR4 VU Meter links                                     * 
+.................... //*      RD1 = VR5 VU Meter links                                     * 
+.................... //*      RD2 = VR6 VU Meter links                                     * 
+.................... //*      RD3 = VR7 VU Meter links oberste LED                            * 
+.................... //*      RD4 = VL3 VU Meter links                                     * 
+.................... //*      RD5 = VL2 VU Meter links                                     * 
+.................... //*      RD6 = VL1 VU Meter links                                     * 
+.................... //*      RD7 = VL0 VU Meter links unterste LED                            * 
+.................... //*      RE0 = LED Bass                                              * 
+.................... //*      RE1 = LED Mitten                                           * 
+.................... //*      RE2 = LED Höhen                                              * 
+.................... //******************************************************************************* 
+.................... // 
+....................  
+.................... //############################################################################### 
+.................... //#                                                                               # 
+.................... //# Diese Mustervorlage soll unverändert unter dem Namen: Muster.c bleiben        # 
+.................... //# Erstellt für PIC 18FF45Kxx                                 STRASSER  2011.    # 
+.................... //# Verwendeter Schriftfont: Courier New, Fett, 8-14, Textmode CCS Standard       # 
+.................... //# Tabstops 4, Nicht mit Leerzeichen auffüllen, Auto intend on                   # 
+.................... //# PIC REGISTER in Großbuchstaben z.B: GIE                                       # 
+.................... //# Variablen groß / klein z.B: int Count_B (B=Byte(8),L(16),D(32),F,C(8),b(1))   # 
+.................... //# Konstante groß / klein z.B: const int Delay1_K = 255; oder:                 # 
+.................... //#   define Delay1_K 55 (Dezimal, 0x37 Hex,055 Octal).                              # 
+.................... //#   Ausnahme: Maschinenkonstante: TRIS_INIT, OPTION_INIT                          # 
+.................... //# Befehle immmer klein z.B:  for (Count_B=1;Count_B=DELAY;Count_B++)            # 
+.................... //# Unterscheidung bit und Byte durch _b bzw. _B am Ende                          # 
+.................... //# I/O groß, Portdefinitionen durch _p bzw. _P (p..Pin, P..Port) am Ende         # 
+.................... //#   z.B: LED_p, SENSOR_p, SEGMENT_P                                           # 
+.................... //# Labels immer Groß & klein, ohne Einrücken am Anfang, allein in einer Zeile    # 
+.................... //#                                                                               # 
+.................... //############################################################################### 
+.................... // 
+.................... //                    ** Grunddefinitionen Include Dateien**                                                                     
+.................... #include    <18F45K22.h>             // Zuordnung Prozessorregister 
+.................... //////// Standard Header file for the PIC18F45K22 device //////////////// 
+.................... #device PIC18F45K22 
+.................... #list 
+....................  
+.................... //#device    ICD=TRUE               // ICD2 Implementation 
+.................... #device    adc=10                  // A/D Wandler auf 10 Bit 
+.................... #case                            // Compiler ist Case sensitive  
+.................... #use       fast_io(a)               // TRIS Register wird selbst 
+.................... #use       fast_io(b)                // gesetzt 
+.................... #use      fast_io(c)               //  
+.................... #use      fast_io(d)               //  
+.................... #use      fast_io(e)               //  
+.................... #fuses       NOPROTECT,NOWDT,NOBROWNOUT,PUT,INTRC_IO,NOLVP,NOMCLR,NOPBADEN,NOPLLEN 
+.................... #use       delay (clock=8000000)      // Verzögerungsroutinen (notwendig f. RS232) 
+*
+00EC:  CLRF   FEA
+00EE:  MOVLW  34
+00F0:  MOVWF  FE9
+00F2:  MOVF   FEF,W
+00F4:  BZ    0110
+00F6:  MOVLW  02
+00F8:  MOVWF  01
+00FA:  CLRF   00
+00FC:  DECFSZ 00,F
+00FE:  BRA    00FC
+0100:  DECFSZ 01,F
+0102:  BRA    00FA
+0104:  MOVLW  97
+0106:  MOVWF  00
+0108:  DECFSZ 00,F
+010A:  BRA    0108
+010C:  DECFSZ FEF,F
+010E:  BRA    00F6
+0110:  RETLW  00
+....................  
+.................... //                        ** Datenrichtung ** 
+.................... #define         TRISA_INIT      0b10101111    // Datenrichtung Register RA 
+.................... #define         TRISB_INIT      0b11111100    // Datenrichtung Register RB 
+.................... #define         TRISC_INIT      0b00000000   // Datenregister Register RC 
+.................... #define         TRISD_INIT      0b00000000   // 
+.................... #define         TRISE_INIT      0b00000000   // 
+....................  
+.................... //                              ** Konstantendefinitionen ** 
+.................... const int Zimax_K =            10;         // maximale Anzahl Ziffernvorrat 
+.................... const long Timerstartwert_K =   100;       // Timer wird auf 10ms eingestellt 
+.................... const int Preload_K   =         5;         // Korrekturwert für Prescaler 
+....................  
+....................                                
+.................... //                        ** Datentabellen ** 
+....................  
+....................     
+.................... //                        ** Variablendefinition ** 
+....................  
+.................... short      Dimm_b =    0;            // Flag für Analogumschaltung RA0/1 
+....................  
+.................... int          
+....................          Hsec_B =         0, 
+....................          Sec_B =            0, 
+....................          Min_B =            0, 
+....................          Hour_B =         0, 
+....................          Presc_B =         Preload_K, 
+....................          Cout_B =         0, 
+....................          Dout_B =         0, 
+....................          Down_B =         0;      // Wird im Interrupt decrementiert 
+.................... long      Ana_L =            0; 
+....................  
+.................... //                  ** Arraydefinitionen ** 
+.................... long   Adc_L [5];                                  
+....................                    
+....................  
+.................... //                        ** Portdefinitionen ** 
+.................... #define      Vul_p            PIN_A0      // Eingang Aussteuerung links 
+.................... #define      Vur_p            PIN_A1      // Eingang Aussteuerung rechts 
+.................... #define      Bass_p            PIN_A2      // Eingang Bass 
+.................... #define      Mid_p            PIN_A3      // Eingang Mitten 
+.................... #define      Treble_p         PIN_A5      // Eingang Höhen 
+.................... #define      Cs_p            PIN_A4      // Chipselect PCM2705 
+.................... #define      Sspnd_p            PIN_A7      // Powerdown low aktiv 
+.................... #define      Sclk_p            PIN_B0      // Serielle Clock 
+.................... #define    Mosi_p            PIN_B1      // Serielle Daten 
+.................... #define      Minus_p            PIN_B2      // Taste Minus 
+.................... #define    Plus_p            PIN_B3      // Taste Plus 
+.................... #define      Down_p            PIN_B4      // Taste Down 
+.................... #define    Up_p            PIN_B5      // Taste Up 
+.................... #define      Ledb_p            PIN_E0      // Bass LED 
+.................... #define      Ledm_p            PIN_E1      // Mid LED 
+.................... #define      Ledt_p            PIN_E2      // Treble LED 
+....................  
+....................  
+....................  
+.................... //                        ** Globale Includedateien mit Port IO ** 
+....................  
+....................  
+....................  
+.................... //                        ** Interrupts ** 
+.................... #INT_TIMER0 
+.................... void timer0_int() 
+.................... { 
+....................    set_timer0 (Timerstartwert_K);          // Timer0 Interr. alle 1/100 sek 
+*
+00AE:  CLRF   FD7
+00B0:  MOVLW  64
+00B2:  MOVWF  FD6
+....................    --Down_B;  
+00B4:  DECF   21,F
+....................    if (-- Presc_B == 0) 
+00B6:  DECFSZ 1E,F
+00B8:  BRA    00E6
+....................    { 
+....................       Presc_B = Preload_K; 
+00BA:  MOVLW  05
+00BC:  MOVWF  1E
+....................       if (++Hsec_B == 100) 
+00BE:  INCF   1A,F
+00C0:  MOVF   1A,W
+00C2:  SUBLW  64
+00C4:  BNZ   00E6
+....................       { 
+....................          Hsec_B = 0; 
+00C6:  CLRF   1A
+....................          if (++Sec_B == 60) 
+00C8:  INCF   1B,F
+00CA:  MOVF   1B,W
+00CC:  SUBLW  3C
+00CE:  BNZ   00E6
+....................          { 
+....................             Sec_B = 0; 
+00D0:  CLRF   1B
+....................             if (++Min_B == 60) 
+00D2:  INCF   1C,F
+00D4:  MOVF   1C,W
+00D6:  SUBLW  3C
+00D8:  BNZ   00E6
+....................             { 
+....................                Min_B = 0; 
+00DA:  CLRF   1C
+....................                if (++Hour_B == 24) 
+00DC:  INCF   1D,F
+00DE:  MOVF   1D,W
+00E0:  SUBLW  18
+00E2:  BNZ   00E6
+....................                { 
+....................                   Hour_B = 0; 
+00E4:  CLRF   1D
+....................                } 
+....................             } 
+....................          } 
+....................       } 
+....................    } 
+.................... } 
+....................  
+.................... //                        ** Functions ** 
+....................  
+00E6:  BCF    FF2.2
+00E8:  GOTO   0060
+.................... void Portout (int Li_B,int Re_B) 
+.................... { 
+*
+0212:  CLRF   35
+....................    int Out_B = 0, I_B; 
+....................     
+....................    for(I_B=0;I_B <=3;++I_B) Out_B  |= bit_test (Li_B,(3-I_B)) << I_B; // Bit0-3 auf 7-4 
+0214:  CLRF   36
+0216:  MOVF   36,W
+0218:  SUBLW  03
+021A:  BNC   0254
+021C:  MOVLW  03
+021E:  BSF    FD8.0
+0220:  SUBFWB 36,W
+0222:  MOVWF  37
+0224:  MOVFF  33,00
+0228:  MOVF   37,W
+022A:  MOVWF  01
+022C:  BZ    0236
+022E:  BCF    FD8.0
+0230:  RRCF   00,F
+0232:  DECFSZ 01,F
+0234:  BRA    022E
+0236:  MOVLW  00
+0238:  BTFSC  00.0
+023A:  MOVLW  01
+023C:  MOVWF  00
+023E:  MOVF   36,W
+0240:  MOVWF  01
+0242:  BZ    024C
+0244:  BCF    FD8.0
+0246:  RLCF   00,F
+0248:  DECFSZ 01,F
+024A:  BRA    0244
+024C:  MOVF   00,W
+024E:  IORWF  35,F
+0250:  INCF   36,F
+0252:  BRA    0216
+....................    swap (Out_B); 
+0254:  SWAPF  35,F
+....................    swap (Re_B); 
+0256:  SWAPF  34,F
+....................    for(I_B=0;I_B <=3;++I_B) Out_B  |= bit_test (Re_B,(I_B)) << I_B; 
+0258:  CLRF   36
+025A:  MOVF   36,W
+025C:  SUBLW  03
+025E:  BNC   0290
+0260:  MOVFF  34,00
+0264:  MOVF   36,W
+0266:  MOVWF  01
+0268:  BZ    0272
+026A:  BCF    FD8.0
+026C:  RRCF   00,F
+026E:  DECFSZ 01,F
+0270:  BRA    026A
+0272:  MOVLW  00
+0274:  BTFSC  00.0
+0276:  MOVLW  01
+0278:  MOVWF  00
+027A:  MOVF   36,W
+027C:  MOVWF  01
+027E:  BZ    0288
+0280:  BCF    FD8.0
+0282:  RLCF   00,F
+0284:  DECFSZ 01,F
+0286:  BRA    0280
+0288:  MOVF   00,W
+028A:  IORWF  35,F
+028C:  INCF   36,F
+028E:  BRA    025A
+....................    Out_B ^= 255; 
+0290:  MOVLW  FF
+0292:  XORWF  35,F
+....................    output_d (Out_B); 
+0294:  MOVFF  35,F8C
+....................    Out_B = 0; 
+0298:  CLRF   35
+....................    swap (Li_B); 
+029A:  SWAPF  33,F
+....................    for(I_B=0;I_B <=3;++I_B) Out_B  |= bit_test (Li_B,(3-I_B)) << I_B; 
+029C:  CLRF   36
+029E:  MOVF   36,W
+02A0:  SUBLW  03
+02A2:  BNC   02DC
+02A4:  MOVLW  03
+02A6:  BSF    FD8.0
+02A8:  SUBFWB 36,W
+02AA:  MOVWF  37
+02AC:  MOVFF  33,00
+02B0:  MOVF   37,W
+02B2:  MOVWF  01
+02B4:  BZ    02BE
+02B6:  BCF    FD8.0
+02B8:  RRCF   00,F
+02BA:  DECFSZ 01,F
+02BC:  BRA    02B6
+02BE:  MOVLW  00
+02C0:  BTFSC  00.0
+02C2:  MOVLW  01
+02C4:  MOVWF  00
+02C6:  MOVF   36,W
+02C8:  MOVWF  01
+02CA:  BZ    02D4
+02CC:  BCF    FD8.0
+02CE:  RLCF   00,F
+02D0:  DECFSZ 01,F
+02D2:  BRA    02CC
+02D4:  MOVF   00,W
+02D6:  IORWF  35,F
+02D8:  INCF   36,F
+02DA:  BRA    029E
+....................    swap (Out_B); 
+02DC:  SWAPF  35,F
+....................    swap (Re_B); 
+02DE:  SWAPF  34,F
+....................    for(I_B=0;I_B <=3;++I_B) Out_B  |= bit_test (Re_B,(I_B)) << I_B; 
+02E0:  CLRF   36
+02E2:  MOVF   36,W
+02E4:  SUBLW  03
+02E6:  BNC   0318
+02E8:  MOVFF  34,00
+02EC:  MOVF   36,W
+02EE:  MOVWF  01
+02F0:  BZ    02FA
+02F2:  BCF    FD8.0
+02F4:  RRCF   00,F
+02F6:  DECFSZ 01,F
+02F8:  BRA    02F2
+02FA:  MOVLW  00
+02FC:  BTFSC  00.0
+02FE:  MOVLW  01
+0300:  MOVWF  00
+0302:  MOVF   36,W
+0304:  MOVWF  01
+0306:  BZ    0310
+0308:  BCF    FD8.0
+030A:  RLCF   00,F
+030C:  DECFSZ 01,F
+030E:  BRA    0308
+0310:  MOVF   00,W
+0312:  IORWF  35,F
+0314:  INCF   36,F
+0316:  BRA    02E2
+....................    Out_B ^= 255; 
+0318:  MOVLW  FF
+031A:  XORWF  35,F
+....................    output_c (Out_B); 
+031C:  MOVFF  35,F8B
+.................... } 
+0320:  RETLW  00
+....................  
+.................... int Makevu (long Ana_L) 
+.................... { 
+....................    int I_B; 
+....................     
+....................    if (Ana_L >400)   I_B = 255; 
+*
+0184:  MOVF   33,W
+0186:  SUBLW  00
+0188:  BC    019A
+018A:  XORLW  FF
+018C:  BNZ   0194
+018E:  MOVF   32,W
+0190:  SUBLW  90
+0192:  BC    019A
+0194:  MOVLW  FF
+0196:  MOVWF  34
+....................    else if (Ana_L >220)I_B = 127; 
+0198:  BRA    020C
+019A:  MOVF   33,F
+019C:  BNZ   01A4
+019E:  MOVF   32,W
+01A0:  SUBLW  DC
+01A2:  BC    01AA
+01A4:  MOVLW  7F
+01A6:  MOVWF  34
+....................    else if (Ana_L >140)I_B = 63; 
+01A8:  BRA    020C
+01AA:  MOVF   33,F
+01AC:  BNZ   01B4
+01AE:  MOVF   32,W
+01B0:  SUBLW  8C
+01B2:  BC    01BA
+01B4:  MOVLW  3F
+01B6:  MOVWF  34
+....................    else if (Ana_L >80)I_B = 31; 
+01B8:  BRA    020C
+01BA:  MOVF   33,F
+01BC:  BNZ   01C4
+01BE:  MOVF   32,W
+01C0:  SUBLW  50
+01C2:  BC    01CA
+01C4:  MOVLW  1F
+01C6:  MOVWF  34
+....................    else if (Ana_L >40)I_B = 15; 
+01C8:  BRA    020C
+01CA:  MOVF   33,F
+01CC:  BNZ   01D4
+01CE:  MOVF   32,W
+01D0:  SUBLW  28
+01D2:  BC    01DA
+01D4:  MOVLW  0F
+01D6:  MOVWF  34
+....................    else if (Ana_L >20)I_B = 7; 
+01D8:  BRA    020C
+01DA:  MOVF   33,F
+01DC:  BNZ   01E4
+01DE:  MOVF   32,W
+01E0:  SUBLW  14
+01E2:  BC    01EA
+01E4:  MOVLW  07
+01E6:  MOVWF  34
+....................    else if (Ana_L >12)I_B = 3; 
+01E8:  BRA    020C
+01EA:  MOVF   33,F
+01EC:  BNZ   01F4
+01EE:  MOVF   32,W
+01F0:  SUBLW  0C
+01F2:  BC    01FA
+01F4:  MOVLW  03
+01F6:  MOVWF  34
+....................    else if (Ana_L >8)I_B = 1; 
+01F8:  BRA    020C
+01FA:  MOVF   33,F
+01FC:  BNZ   0204
+01FE:  MOVF   32,W
+0200:  SUBLW  08
+0202:  BC    020A
+0204:  MOVLW  01
+0206:  MOVWF  34
+....................    else I_B=0; 
+0208:  BRA    020C
+020A:  CLRF   34
+....................    return (I_B); 
+020C:  MOVFF  34,01
+.................... } 
+0210:  RETLW  00
+....................  
+.................... void SendSPI(int16 Data) 
+.................... { 
+....................    output_low(Sclk_p); 
+*
+03BC:  BCF    F8A.0
+....................    output_low(Cs_p); 
+03BE:  BCF    F89.4
+....................    delay_ms (1); 
+03C0:  MOVLW  01
+03C2:  MOVWF  34
+03C4:  RCALL  00EC
+....................     
+....................    int i,u; 
+....................     
+....................    for (i=16; i>0; i--) 
+03C6:  MOVLW  10
+03C8:  MOVWF  32
+03CA:  MOVF   32,F
+03CC:  BZ    0414
+....................    {   // msb first 
+....................       u=i-1; 
+03CE:  MOVLW  01
+03D0:  SUBWF  32,W
+03D2:  MOVWF  33
+....................       output_low(Sclk_p); 
+03D4:  BCF    F8A.0
+....................       delay_ms (1); 
+03D6:  MOVLW  01
+03D8:  MOVWF  34
+03DA:  RCALL  00EC
+....................       (Data & (1<<u)) ? (output_high(Mosi_p)) : (output_low(Mosi_p)); 
+03DC:  MOVLW  01
+03DE:  MOVWF  00
+03E0:  MOVF   33,W
+03E2:  MOVWF  01
+03E4:  BZ    03EE
+03E6:  BCF    FD8.0
+03E8:  RLCF   00,F
+03EA:  DECFSZ 01,F
+03EC:  BRA    03E6
+03EE:  MOVF   00,W
+03F0:  ANDWF  30,W
+03F2:  MOVWF  00
+03F4:  CLRF   03
+03F6:  MOVF   00,W
+03F8:  IORWF  03,W
+03FA:  BZ    0400
+03FC:  BSF    F8A.1
+03FE:  BRA    0402
+0400:  BCF    F8A.1
+....................       delay_ms (1); 
+0402:  MOVLW  01
+0404:  MOVWF  34
+0406:  RCALL  00EC
+....................       output_high(Sclk_p); 
+0408:  BSF    F8A.0
+....................       delay_ms (1); 
+040A:  MOVLW  01
+040C:  MOVWF  34
+040E:  RCALL  00EC
+....................    } 
+0410:  DECF   32,F
+0412:  BRA    03CA
+....................     
+....................    output_high(Mosi_p); 
+0414:  BSF    F8A.1
+....................    delay_ms (10); 
+0416:  MOVLW  0A
+0418:  MOVWF  34
+041A:  RCALL  00EC
+....................    output_high(Cs_p); 
+041C:  BSF    F89.4
+....................    return; 
+.................... } 
+041E:  RETLW  00
+....................  
+....................  
+.................... //                        ** Grundinitialisierung ** 
+.................... void coldstart ()  
+.................... {    
+....................     setup_adc_ports(sAN0|sAN1|sAN2|sAN3|sAN4|VSS_VDD); 
+*
+0112:  MOVF   FC1,W
+0114:  ANDLW  F0
+0116:  MOVWF  FC1
+0118:  MOVLW  2F
+011A:  MOVLB  F
+011C:  MOVWF  x38
+011E:  MOVLW  00
+0120:  MOVWF  x3C
+0122:  MOVWF  x39
+0124:  MOVWF  x3A
+0126:  MOVWF  x3B
+....................    setup_adc(ADC_CLOCK_INTERNAL|ADC_TAD_MUL_0); 
+0128:  MOVF   FC0,W
+012A:  ANDLW  C0
+012C:  IORLW  07
+012E:  MOVWF  FC0
+0130:  BSF    FC0.7
+0132:  BSF    FC2.0
+....................    setup_oscillator(OSC_8MHZ|OSC_INTRC); 
+0134:  MOVLW  62
+0136:  MOVWF  FD3
+0138:  MOVF   FD3,W
+....................    setup_comparator(NC_NC_NC_NC); 
+013A:  MOVLW  04
+013C:  MOVWF  F78
+013E:  MOVWF  F79
+....................    output_a (0b00001000); 
+0140:  MOVLW  08
+0142:  MOVWF  F89
+....................    output_b (0); 
+0144:  CLRF   F8A
+....................    output_c (0); 
+0146:  CLRF   F8B
+....................    output_d (0); 
+0148:  CLRF   F8C
+....................    output_e (0); 
+014A:  CLRF   F8D
+....................    set_tris_a (TRISA_INIT);               // Datenrichtung Port A 
+014C:  MOVLW  AF
+014E:  MOVWF  F92
+....................    set_tris_b (TRISB_INIT);               // Datenrichtung Port B 
+0150:  MOVLW  FC
+0152:  MOVWF  F93
+....................    set_tris_c (TRISC_INIT); 
+0154:  MOVLW  00
+0156:  MOVWF  F94
+....................    set_tris_d (TRISD_INIT); 
+0158:  MOVWF  F95
+....................    set_tris_e (TRISE_INIT); 
+015A:  BCF    F96.0
+015C:  BCF    F96.1
+015E:  BCF    F96.2
+0160:  BCF    F96.3
+....................    port_b_pullups(TRUE); 
+0162:  MOVLW  01
+0164:  MOVWF  F7C
+0166:  BCF    FF1.7
+....................     setup_timer_0(RTCC_INTERNAL|RTCC_DIV_32|RTCC_8_BIT); 
+0168:  MOVLW  C4
+016A:  MOVWF  FD5
+....................                                     // Timer0 intern, Takt 20.00/4/64 = 78.125 KHz 
+....................                                        // Interrupt alle 256/15.625 = 3.2768 ms (305Hz) 
+....................                                        // Korrekturwert für 10 ms: 156 Timerclicks 
+....................                                        // -> Timer wird auf 256-156=100 vorgestellt  
+....................       set_timer0 (Timerstartwert_K);            // Timerwert auf Startwert setzen 
+016C:  CLRF   FD7
+016E:  MOVLW  64
+0170:  MOVWF  FD6
+....................       enable_interrupts(INT_TIMER0); 
+0172:  BSF    FF2.5
+....................    setup_timer_1(T1_DISABLED);               // Nur Timer0 Interrupt 
+0174:  CLRF   FCD
+0176:  CLRF   FCC
+....................    delay_ms (200); 
+0178:  MOVLW  C8
+017A:  MOVWF  34
+017C:  MOVLB  0
+017E:  RCALL  00EC
+.................... }             
+0180:  GOTO   046C (RETURN)
+....................  
+.................... void LEDTest() 
+.................... { 
+....................    int I_B, li, re; 
+....................     
+....................    output_low (Ledb_p); 
+*
+0322:  BCF    F8D.0
+....................    output_low (Ledm_p); 
+0324:  BCF    F8D.1
+....................    output_low (Ledt_p); 
+0326:  BCF    F8D.2
+....................     
+....................    /* 
+....................       255 = 1111 1111 
+....................       127 = 0111 1111 
+....................    */ 
+....................     
+....................    li = 1; 
+0328:  MOVLW  01
+032A:  MOVWF  31
+....................    re = 0; 
+032C:  CLRF   32
+....................    for (I_B = 0; I_B < 8; I_B++){ 
+032E:  CLRF   30
+0330:  MOVF   30,W
+0332:  SUBLW  07
+0334:  BNC   034E
+....................       Portout(li, re); 
+0336:  MOVFF  31,33
+033A:  MOVFF  32,34
+033E:  RCALL  0212
+....................       delay_ms (100); 
+0340:  MOVLW  64
+0342:  MOVWF  34
+0344:  RCALL  00EC
+....................       li *= 2; 
+0346:  BCF    FD8.0
+0348:  RLCF   31,F
+....................    } 
+034A:  INCF   30,F
+034C:  BRA    0330
+....................    re = 128; 
+034E:  MOVLW  80
+0350:  MOVWF  32
+....................    for (I_B = 0; I_B < 8; I_B++){ 
+0352:  CLRF   30
+0354:  MOVF   30,W
+0356:  SUBLW  07
+0358:  BNC   0372
+....................       Portout(li, re); 
+035A:  MOVFF  31,33
+035E:  MOVFF  32,34
+0362:  RCALL  0212
+....................       delay_ms (100); 
+0364:  MOVLW  64
+0366:  MOVWF  34
+0368:  RCALL  00EC
+....................       re /= 2; 
+036A:  BCF    FD8.0
+036C:  RRCF   32,F
+....................    } 
+036E:  INCF   30,F
+0370:  BRA    0354
+....................     
+....................    //delay_ms (500); 
+....................     
+....................    output_high (Ledb_p); 
+0372:  BSF    F8D.0
+....................    output_high (Ledm_p); 
+0374:  BSF    F8D.1
+....................    output_high (Ledt_p);   
+0376:  BSF    F8D.2
+....................     
+....................    delay_ms (500); 
+0378:  MOVLW  02
+037A:  MOVWF  33
+037C:  MOVLW  FA
+037E:  MOVWF  34
+0380:  RCALL  00EC
+0382:  DECFSZ 33,F
+0384:  BRA    037C
+....................     
+....................    for(I_B = 0; I_B < 3; I_B++){ 
+0386:  CLRF   30
+0388:  MOVF   30,W
+038A:  SUBLW  02
+038C:  BNC   03B8
+....................       Portout(255,255); 
+038E:  MOVLW  FF
+0390:  MOVWF  33
+0392:  MOVWF  34
+0394:  RCALL  0212
+....................       output_low (Ledb_p); 
+0396:  BCF    F8D.0
+....................       output_low (Ledm_p); 
+0398:  BCF    F8D.1
+....................       output_low (Ledt_p); 
+039A:  BCF    F8D.2
+....................        
+....................       delay_ms(100); 
+039C:  MOVLW  64
+039E:  MOVWF  34
+03A0:  RCALL  00EC
+....................        
+....................       Portout(0,0); 
+03A2:  CLRF   33
+03A4:  CLRF   34
+03A6:  RCALL  0212
+....................       output_high (Ledb_p); 
+03A8:  BSF    F8D.0
+....................       output_high (Ledm_p); 
+03AA:  BSF    F8D.1
+....................       output_high (Ledt_p); 
+03AC:  BSF    F8D.2
+....................        
+....................       delay_ms(100); 
+03AE:  MOVLW  64
+03B0:  MOVWF  34
+03B2:  RCALL  00EC
+....................    } 
+03B4:  INCF   30,F
+03B6:  BRA    0388
+.................... } 
+03B8:  GOTO   0592 (RETURN)
+.................... //                        ** Hauptprogramm ** 
+....................  
+.................... void main ()  
+.................... { 
+*
+0420:  CLRF   FF8
+0422:  BCF    FD0.7
+0424:  BSF    07.7
+0426:  CLRF   FEA
+0428:  CLRF   FE9
+042A:  MOVLW  60
+042C:  MOVWF  FD3
+042E:  MOVF   FD3,W
+0430:  BCF    19.0
+0432:  CLRF   1A
+0434:  CLRF   1B
+0436:  CLRF   1C
+0438:  CLRF   1D
+043A:  MOVLW  05
+043C:  MOVWF  1E
+043E:  CLRF   1F
+0440:  CLRF   20
+0442:  CLRF   21
+0444:  CLRF   23
+0446:  CLRF   22
+0448:  MOVF   FC1,W
+044A:  ANDLW  F0
+044C:  MOVWF  FC1
+044E:  MOVLW  00
+0450:  MOVLB  F
+0452:  MOVWF  x38
+0454:  MOVLW  00
+0456:  MOVWF  x3C
+0458:  MOVLW  00
+045A:  MOVWF  x39
+045C:  MOVLW  00
+045E:  MOVWF  x3A
+0460:  MOVLW  00
+0462:  MOVWF  x3B
+0464:  CLRF   F78
+0466:  CLRF   F79
+....................    int R_B,L_B; 
+....................     
+....................    coldstart();                        // Grundinitialisierung 
+0468:  MOVLB  0
+046A:  BRA    0112
+....................       enable_interrupts(GLOBAL); 
+046C:  MOVLW  C0
+046E:  IORWF  FF2,F
+....................  
+....................    while (TRUE)                         // Beginn Hauptprogramm 
+....................    { 
+....................       /* 
+....................       inputOn = 0; 
+....................  
+....................       set_adc_channel(2); 
+....................       delay_ms (1); 
+....................       inputOn += read_adc(); 
+....................        
+....................       set_adc_channel(3); 
+....................       delay_ms (1); 
+....................       inputOn += read_adc(); 
+....................        
+....................       set_adc_channel(4); 
+....................       delay_ms (1); 
+....................       inputOn += read_adc(); 
+....................       */ 
+....................         //      VU-Meter 
+....................       set_adc_channel(0); 
+0470:  MOVLW  00
+0472:  MOVWF  01
+0474:  MOVF   FC2,W
+0476:  ANDLW  C3
+0478:  IORWF  01,W
+047A:  MOVWF  FC2
+....................       delay_ms (1); 
+047C:  MOVLW  01
+047E:  MOVWF  34
+0480:  RCALL  00EC
+....................       L_B = Makevu (read_adc()); 
+0482:  BSF    FC2.1
+0484:  BTFSC  FC2.1
+0486:  BRA    0484
+0488:  MOVFF  FC4,03
+048C:  MOVFF  FC3,30
+0490:  MOVFF  FC4,31
+0494:  MOVFF  FC4,33
+0498:  MOVFF  FC3,32
+049C:  RCALL  0184
+049E:  MOVFF  01,2F
+....................       set_adc_channel(1); 
+04A2:  MOVLW  04
+04A4:  MOVWF  01
+04A6:  MOVF   FC2,W
+04A8:  ANDLW  C3
+04AA:  IORWF  01,W
+04AC:  MOVWF  FC2
+....................       delay_ms (1); 
+04AE:  MOVLW  01
+04B0:  MOVWF  34
+04B2:  RCALL  00EC
+....................       R_B = Makevu (read_adc()); 
+04B4:  BSF    FC2.1
+04B6:  BTFSC  FC2.1
+04B8:  BRA    04B6
+04BA:  MOVFF  FC4,03
+04BE:  MOVFF  FC3,30
+04C2:  MOVFF  FC4,31
+04C6:  MOVFF  FC4,33
+04CA:  MOVFF  FC3,32
+04CE:  RCALL  0184
+04D0:  MOVFF  01,2E
+....................        
+....................       if((R_B+L_B) > 1){ 
+04D4:  MOVF   2F,W
+04D6:  ADDWF  2E,W
+04D8:  SUBLW  01
+04DA:  BC    0590
+....................   
+....................          //      VU-Meter - Portout 
+....................          Portout (L_B,R_B); 
+04DC:  MOVFF  2F,33
+04E0:  MOVFF  2E,34
+04E4:  RCALL  0212
+....................           
+....................          //      Bass, mid, treble 
+....................             
+....................        
+....................          set_adc_channel(2); 
+04E6:  MOVLW  08
+04E8:  MOVWF  01
+04EA:  MOVF   FC2,W
+04EC:  ANDLW  C3
+04EE:  IORWF  01,W
+04F0:  MOVWF  FC2
+....................          delay_ms (1); 
+04F2:  MOVLW  01
+04F4:  MOVWF  34
+04F6:  RCALL  00EC
+....................          if (read_adc() > 560) output_low (Ledb_p); 
+04F8:  BSF    FC2.1
+04FA:  BTFSC  FC2.1
+04FC:  BRA    04FA
+04FE:  MOVFF  FC4,03
+0502:  MOVFF  FC3,30
+0506:  MOVF   FC4,W
+0508:  MOVWF  31
+050A:  SUBLW  01
+050C:  BC    051C
+050E:  XORLW  FF
+0510:  BNZ   0518
+0512:  MOVF   30,W
+0514:  SUBLW  30
+0516:  BC    051C
+0518:  BCF    F8D.0
+....................          else output_high (Ledb_p); 
+051A:  BRA    051E
+051C:  BSF    F8D.0
+....................           
+....................          set_adc_channel(3); 
+051E:  MOVLW  0C
+0520:  MOVWF  01
+0522:  MOVF   FC2,W
+0524:  ANDLW  C3
+0526:  IORWF  01,W
+0528:  MOVWF  FC2
+....................          delay_ms (1); 
+052A:  MOVLW  01
+052C:  MOVWF  34
+052E:  RCALL  00EC
+....................          if (read_adc() > 570) output_low (Ledm_p); 
+0530:  BSF    FC2.1
+0532:  BTFSC  FC2.1
+0534:  BRA    0532
+0536:  MOVFF  FC4,03
+053A:  MOVFF  FC3,30
+053E:  MOVF   FC4,W
+0540:  MOVWF  31
+0542:  SUBLW  01
+0544:  BC    0554
+0546:  XORLW  FF
+0548:  BNZ   0550
+054A:  MOVF   30,W
+054C:  SUBLW  3A
+054E:  BC    0554
+0550:  BCF    F8D.1
+....................          else output_high (Ledm_p); 
+0552:  BRA    0556
+0554:  BSF    F8D.1
+....................           
+....................          set_adc_channel(4); 
+0556:  MOVLW  10
+0558:  MOVWF  01
+055A:  MOVF   FC2,W
+055C:  ANDLW  C3
+055E:  IORWF  01,W
+0560:  MOVWF  FC2
+....................          delay_ms (1); 
+0562:  MOVLW  01
+0564:  MOVWF  34
+0566:  RCALL  00EC
+....................          if (read_adc() > 550) output_low (Ledt_p); 
+0568:  BSF    FC2.1
+056A:  BTFSC  FC2.1
+056C:  BRA    056A
+056E:  MOVFF  FC4,03
+0572:  MOVFF  FC3,30
+0576:  MOVF   FC4,W
+0578:  MOVWF  31
+057A:  SUBLW  01
+057C:  BC    058C
+057E:  XORLW  FF
+0580:  BNZ   0588
+0582:  MOVF   30,W
+0584:  SUBLW  26
+0586:  BC    058C
+0588:  BCF    F8D.2
+....................          else output_high (Ledt_p); 
+058A:  BRA    058E
+058C:  BSF    F8D.2
+....................       } 
+....................       else { 
+058E:  BRA    0592
+....................          LEDTest(); 
+0590:  BRA    0322
+....................       } 
+.................... //      Tasten 
+....................       if(input(Minus_p)==0) 
+0592:  BTFSC  F81.2
+0594:  BRA    059E
+....................          SendSPI(0x0004); 
+0596:  CLRF   31
+0598:  MOVLW  04
+059A:  MOVWF  30
+059C:  RCALL  03BC
+....................     
+....................       if(input(Plus_p)==0) 
+059E:  BTFSC  F81.3
+05A0:  BRA    05AA
+....................          SendSPI(0x0002); 
+05A2:  CLRF   31
+05A4:  MOVLW  02
+05A6:  MOVWF  30
+05A8:  RCALL  03BC
+....................  
+....................       if(input(Up_p)==0)  
+05AA:  BTFSC  F81.5
+05AC:  BRA    05B6
+....................          SendSPI(0x0008); 
+05AE:  CLRF   31
+05B0:  MOVLW  08
+05B2:  MOVWF  30
+05B4:  RCALL  03BC
+....................        
+....................       if(input(Down_p)==0)  
+05B6:  BTFSC  F81.4
+05B8:  BRA    05C2
+....................          SendSPI(0x0010); 
+05BA:  CLRF   31
+05BC:  MOVLW  10
+05BE:  MOVWF  30
+05C0:  RCALL  03BC
+....................        
+....................       SendSPI(0x0000);       
+05C2:  CLRF   31
+05C4:  CLRF   30
+05C6:  RCALL  03BC
+....................    }  
+05C8:  BRA    0470
+.................... } 
+....................  
+.................... // Programmende 
+05CA:  SLEEP 
+
+Configuration Fuses:
+   Word  1: E800   INTRC_IO NOPLLEN PRIMARY_ON FCMEN IESO
+   Word  2: 3C18   PUT NOBROWNOUT BORV20 NOWDT WDT32768
+   Word  3: 3D00   CCP2C1 NOPBADEN LPT1OSC NODELAYINTOSC TIMER3C0 CCP2D2 NOMCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
