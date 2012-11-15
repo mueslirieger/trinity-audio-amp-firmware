@@ -1,0 +1,55 @@
+
+ROM used: 1840 (6%)
+          1840 (6%) including unused fragments
+
+          2 Average locations per line
+          8 Average locations per statement
+
+RAM used: 54 (4%) at main() level
+          60 (4%) worst case
+
+Stack used: 4 worst case (out of 31 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  503   235 100  PIC18F45K22_V0_4.c
+  582     0   0  C:\Program Files (x86)\PICC\devices\18F45K22.h
+----- -----
+ 1085   235 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     38   1   1             @delay_ms1
+0     62   2   0   323  3.7  timer0_int
+0    272   7   5   954  6.0  Portout
+0    142   4   3   533  3.8  Makevu
+0    100   3   2   539  6.7  SendSPI
+0    114   3   0   578  1.9  coldstart
+0    154   4   4  1031  4.9  LEDTest1
+0     76   2   3   460  3.8  LEDTest2
+0    114   3   4   839  5.5  LEDTest3
+0     88   2   3   591  6.7  LEDTest4
+0     56   2   1   243  2.3  checkKeys
+0    454  12   8  1503  5.9  main
+
+Program metrics:
+    Functions               11
+    Statements              235
+    Comments                305
+    Volume (V)              11782
+    Difficilty (D)          51.3
+    Effort to implement (E) 603906
+    Time to implement (T)   9 hours, 19 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   36
+    Maintainability (MI)    132
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000AC   166  0  
+000AE-07FFE  1670  30924  
+
+
+
