@@ -1,0 +1,7 @@
+>>> Warning 202 "PIC18F45K22_V0_6_75.c" Line 93(19,26): Variable never used:   Zimax_K
+>>> Warning 202 "PIC18F45K22_V0_6_75.c" Line 103(19,25): Variable never used:   Dimm_b
+>>> Warning 202 "PIC18F45K22_V0_6_75.c" Line 111(17,23): Variable never used:   Cout_B
+>>> Warning 202 "PIC18F45K22_V0_6_75.c" Line 112(17,23): Variable never used:   Dout_B
+>>> Warning 202 "PIC18F45K22_V0_6_75.c" Line 117(14,19): Variable never used:   Adc_L
+      Memory usage:   ROM=7%      RAM=4% - 4%
+      0 Errors,  5 Warnings.
