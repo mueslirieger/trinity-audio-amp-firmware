@@ -1,0 +1,164 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019.0   Dimm_b
+01A     Hsec_B
+01B     Sec_B
+01C     Min_B
+01D     Hour_B
+01E     Presc_B
+01F     Cout_B
+020     Dout_B
+021     Down_B
+022-023 Ana_L
+024-02D Adc_L
+02E     main.R_B
+02F     main.L_B
+030     main.R_VU
+031     main.L_VU
+032     main.avg_R
+033     main.avg_L
+034     LEDTest5.I_B
+034     LEDTest1.I_B
+034-035 SendSPI.Data
+034-035 Makevu.Ana_L
+034     LEDTest4.I_B
+034     LEDTest3.I_B
+034     LEDTest2.I_B
+034     LEDTest6.I_B
+034     checkKeys.@SCRATCH1
+034     main.@SCRATCH1
+035     LEDTest1.li
+035     LEDTest6.top
+035     LEDTest4.I_B2
+035     LEDTest2.li
+035     LEDTest5.I_B2
+035     LEDTest3.li
+035     main.@SCRATCH2
+036     LEDTest1.re
+036     SendSPI.i
+036     LEDTest4.value
+036     Makevu.I_B
+036     LEDTest3.re
+036     LEDTest5.top
+036     LEDTest6.bottom
+036     LEDTest2.re
+037     SendSPI.u
+037     LEDTest5.bottom
+037     LEDTest6.teiler
+037     LEDTest1.@SCRATCH1
+037     LEDTest3.@SCRATCH1
+037     LEDTest4.@SCRATCH1
+038     @DIV88.P1
+038     @delay_ms1.P2
+038     LEDTest5.@SCRATCH1
+038     LEDTest6.@SCRATCH1
+039     @DIV88.P1
+039     LEDTest6.@SCRATCH2
+03A     Portout.Li_B
+03A     @DIV88.@SCRATCH1
+03B     Portout.Re_B
+03C     Portout.Out_B
+03D     Portout.I_B
+03E     Portout.@SCRATCH1
+F55     CCP_5
+F55     CCP_5_LOW
+F56     CCP_5_HIGH
+F58     CCP_4
+F58     CCP_4_LOW
+F59     CCP_4_HIGH
+F5E     CCP_3
+F5E     CCP_3_LOW
+F5F     CCP_3_HIGH
+F67     CCP_2_LOW
+F67     CCP_2
+F68     CCP_2_HIGH
+F78.6   C2OUT
+F79.6   C1OUT
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+00EC  @delay_ms1
+00AE  timer0_int
+0212  Portout
+0184  Makevu
+03BC  SendSPI
+0112  coldstart
+0322  LEDTest1
+0458  LEDTest2
+04A4  LEDTest3
+0516  LEDTest4
+0644  LEDTest5
+0598  LEDTest6
+056E  @DIV88
+0420  checkKeys
+06A4  main
+06A4  @cinit
+
+
+User Memory space: 
+
+User Memory space: 
+
+Project Directory:
+    S:\HTL\4AHELI\Werkstatt\Trinity\Programm\versions\V0_5\
+
+Project Files:
+    PIC18F45K22_V0_5.c
+    C:\Program Files (x86)\PICC\devices\18F45K22.h
+
+Units:
+    S:\HTL\4AHELI\Werkstatt\Trinity\Programm\versions\V0_5\PIC18F45K22_V0_5 (main)
+
+Compiler Settings:
+    Processor:      PIC18F45K22
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Case Sensitive: Yes
+
+Output Files:
+    Errors:      PIC18F45K22_V0_5.err
+    Ext Symbols: PIC18F45K22_V0_5.esym
+    INHX32:      PIC18F45K22_V0_5.hex
+    Symbols:     PIC18F45K22_V0_5.sym
+    List:        PIC18F45K22_V0_5.lst
+    Debug/COFF:  PIC18F45K22_V0_5.cof
+    Project:     PIC18F45K22_V0_5.PJT
+    Call Tree:   PIC18F45K22_V0_5.tre
+    Statistics:  PIC18F45K22_V0_5.sta
