@@ -1,19 +1,19 @@
 ÀÄPIC18F45K22_V0_6_77
-   ÃÄmain  0/556  Ram=9
-   ³  ÃÄ@cinit1  (Inline)  Ram=0
-   ³  ÃÄcoldstart  0/130  Ram=0
+   ÃÄmain  0/558  Ram=9
+   ³  ÃÄ??0??
+   ³  ÃÄcoldstart  0/126  Ram=0
    ³  ³  ÀÄ@delay_ms1  0/38  Ram=1
    ³  ÃÄ@delay_ms1  0/38  Ram=1
    ³  ÃÄ@delay_ms1  0/38  Ram=1
    ³  ÃÄ@delay_ms1  0/38  Ram=1
    ³  ÃÄ@delay_ms1  0/38  Ram=1
-   ³  ÃÄMakevu  0/140  Ram=3
-   ³  ÃÄMakevu  0/140  Ram=3
+   ³  ÃÄMakevu  0/142  Ram=3
+   ³  ÃÄMakevu  0/142  Ram=3
    ³  ÃÄPortout  0/272  Ram=5
    ³  ÃÄ@delay_ms1  0/38  Ram=1
    ³  ÃÄ@delay_ms1  0/38  Ram=1
    ³  ÃÄ@delay_ms1  0/38  Ram=1
-   ³  ÀÄLEDTest  0/46  Ram=1
+   ³  ÀÄLEDTest  0/48  Ram=1
    ³     ÃÄ@goto10382  0/42  Ram=0
    ³     ÃÄLEDTest8  0/92  Ram=2
    ³     ³  ÃÄPortout  0/272  Ram=5
@@ -48,7 +48,7 @@
    ³     ³  ÃÄ@delay_ms1  0/38  Ram=1
    ³     ³  ÃÄPortout  0/272  Ram=5
    ³     ³  ÀÄ@delay_ms1  0/38  Ram=1
-   ³     ÃÄLEDTest7  0/200  Ram=6
+   ³     ÃÄLEDTest7  0/202  Ram=6
    ³     ³  ÃÄPortout  0/272  Ram=5
    ³     ³  ÃÄPortout  0/272  Ram=5
    ³     ³  ÃÄ@DIV88  0/40  Ram=3
@@ -56,7 +56,7 @@
    ³     ³  ÃÄPortout  0/272  Ram=5
    ³     ³  ÃÄPortout  0/272  Ram=5
    ³     ³  ÀÄ@delay_ms1  0/38  Ram=1
-   ³     ÀÄLEDTest1  0/214  Ram=4
+   ³     ÀÄLEDTest1  0/216  Ram=4
    ³        ÃÄPortout  0/272  Ram=5
    ³        ÃÄ@delay_ms1  0/38  Ram=1
    ³        ÃÄPortout  0/272  Ram=5
